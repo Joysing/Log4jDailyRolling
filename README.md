@@ -1,1 +1,2 @@
 # Log4jDailyRolling
+当你把log4j分类输出时，比如debug输出在debug.log，error输出在error.log，可以用这个方法把每天生成的debug.log和error.log压缩成一个zip文件
