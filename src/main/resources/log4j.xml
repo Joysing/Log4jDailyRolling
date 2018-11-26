@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <!-- 所有的debug信息输出到该appender -->
+    <appender name="FILE-DEBUG" class="org.apache.log4j.MyDailyRollingFileAppender">
+        <param name="File" value="D:/zip/log-debug.log" /><!-- for windows -->
+        <param name="logPath" value="D:/myzip/" /><!-- 将压缩这个路径下的日志，如果不设置，默认为D:/zip/ -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <param name="Append" value="true" />
+        <param name="Encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG" />
+            <param name="LevelMax" value="INFO" />
+            <param name="acceptOnMatch" value="TRUE" />
+        </filter>
+    </appender>
+
+    <!-- 所有的warn信息输出到该appender -->
+    <appender name="FILE-WARN" class="org.apache.log4j.MyDailyRollingFileAppender">
+        <param name="File" value="D:/zip/log-warn.log" /><!-- for windows -->
+        <param name="logPath" value="D:/myzip/" /><!-- 将压缩这个路径下的日志，如果不设置，默认为D:/zip/ -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <param name="Append" value="true" />
+        <param name="Encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN" />
+            <param name="LevelMax" value="WARN" />
+            <param name="acceptOnMatch" value="TRUE" />
+        </filter>
+    </appender>
+
+    <!-- 所有的info信息输出到该appender -->
+    <appender name="FILE-INFO" class="org.apache.log4j.MyDailyRollingFileAppender">
+        <param name="File" value="D:/zip/log-info.log" /><!-- for windows -->
+        <param name="logPath" value="D:/myzip/" /><!-- 将压缩这个路径下的日志，如果不设置，默认为D:/zip/ -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <param name="Append" value="true" />
+        <param name="Encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO" />
+            <param name="LevelMax" value="INFO" />
+            <param name="acceptOnMatch" value="TRUE" />
+        </filter>
+    </appender>
+
+    <!-- 所有的error信息输出到该appender -->
+    <appender name="FILE-ERROR" class="org.apache.log4j.MyDailyRollingFileAppender">
+        <param name="File" value="D:/zip/log-error.log" /><!-- for windows -->
+        <param name="logPath" value="D:/myzip/" /><!-- 将压缩这个路径下的日志，如果不设置，默认为D:/zip/ -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <param name="Append" value="true" />
+        <param name="Encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR" />
+            <param name="LevelMax" value="ERROR" />
+            <param name="acceptOnMatch" value="TRUE" />
+        </filter>
+    </appender>
+
+    <!-- 所有的fatal信息输出到该appender -->
+    <appender name="FILE-FATAL" class="org.apache.log4j.MyDailyRollingFileAppender">
+        <param name="File" value="D:/zip/log-fatal.log" /><!-- for windows -->
+        <param name="logPath" value="D:/myzip/" /><!-- 将压缩这个路径下的日志，如果不设置，默认为D:/zip/ -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+        <param name="Append" value="true" />
+        <param name="Encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%c %d{ISO8601} -- %p -- %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="fatal" />
+            <param name="LevelMax" value="fatal" />
+            <param name="acceptOnMatch" value="TRUE" />
+        </filter>
+    </appender>
+
+    <!-- 控制台接受所有级别的日志信息 -->
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %c %-5p - %m%n" />
+        </layout>
+    </appender>
+    <!--  root部分定义了log4j的默认输出级别和方式 -->
+    <root>
+        <level value="INFO" /><!-- 所有logger的缺省级别 -->
+        <appender-ref ref="FILE-DEBUG" />
+        <appender-ref ref="FILE-INFO" />
+        <appender-ref ref="FILE-WARN" />
+        <appender-ref ref="FILE-ERROR" />
+        <appender-ref ref="FILE-FATAL" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+</log4j:configuration>
